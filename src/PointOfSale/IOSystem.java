@@ -15,11 +15,9 @@ public class IOSystem {
 			BufferedReader bufferedReader = new BufferedReader(new FileReader(fileToRead));			
 			for (int i=0; i < str.length; i++)
 			{
-				if ((str[i] = bufferedReader.readLine()) != null)
-				{
-					//System.out.println(str[i]);
-				}
+				str[i] = bufferedReader.readLine();
 			}
+			
 			bufferedReader.close();
 		} catch (IOException e) {
 			e.printStackTrace();

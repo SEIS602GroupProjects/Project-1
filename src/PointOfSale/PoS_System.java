@@ -55,7 +55,6 @@ public class PoS_System {
 		if (cmd.equals("help"))
 		{
 			Help();
-			return true;
 		}
 		else if (cmd.equals("exit"))
 		{
@@ -65,13 +64,17 @@ public class PoS_System {
 		{
 			// Do something
 			
-			return true;
+		}
+		else if (cmd.equals("inventory"))
+		{
+			invSys.PrintInventory();
 		}
 		else
 		{
 			System.out.println("Incorrect command. Type 'help' for a list of commands.");
-			return true;
 		}
+		
+		return true;
 	}
 	
 }

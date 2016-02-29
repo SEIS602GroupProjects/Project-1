@@ -11,6 +11,15 @@ public class InventorySystem {
 		ReadInventory();
 	}
 	
+	public void PrintInventory()
+	{
+		for (int i=0; i < items.length; i++)
+		{
+			System.out.print(items[i] + ": " + quantities[i]);
+			System.out.println();
+		}
+	}
+	
 	private void ReadInventory()
 	{
 		String[] tmp = IO.ReadFile("Data/Inventory.txt");
