@@ -6,11 +6,13 @@ public class PoS_System {
 
 	private LoginSystem logSys;
 	private InventorySystem invSys;
+	private Cashier cashier;
 	
 	public PoS_System()
 	{
 		logSys = new LoginSystem();
 		invSys = new InventorySystem();
+		cashier = new Cashier();
 	}
 	
 	public void Run()
@@ -20,10 +22,12 @@ public class PoS_System {
 
 		System.out.println("Please enter a command:");
 		
+		
 		Scanner in = new Scanner(System.in);
 		while (true)
 		{
 			tmp = in.nextLine();
+			// Quit out of loop and system when "exit" is typed
 			if (!Command(tmp))
 			{
 				break;
@@ -45,10 +49,13 @@ public class PoS_System {
 		System.out.println("List of Commands: ");
 		System.out.println("drawer -      Check current drawer");
 		System.out.println("exit -        Exit and shut down system.");
+		System.out.println("inventory -   Check current inventory.");
 		System.out.println();
 		System.out.println("Please enter a command:");
 	}
 	
+	// Place to add new commands to
+	// If a command "" is typed, do something.
 	private boolean Command(String cmd)
 	{
 		
