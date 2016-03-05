@@ -18,7 +18,7 @@ public class PoS_System {
 	public void Run()
 	{
 		String tmp = "";
-		logSys.Login();
+		//logSys.Login();
 
 		System.out.println("Please enter a command:");
 		
