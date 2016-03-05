@@ -1,2 +1,2 @@
-apples=10
-oranges=15
+10345;apples;10;1.05
+29499;oranges;15;0.95
