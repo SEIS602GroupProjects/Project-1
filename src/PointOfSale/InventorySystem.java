@@ -2,10 +2,12 @@ package PointOfSale;
 
 public class InventorySystem {
 
-	private IOSystem IO = new IOSystem();
+	private static IOSystem IO = new IOSystem();
 	
 	
-	private Items[] item;
+	private static Items[] item;
+	
+	
 	
 	
 	public InventorySystem()
@@ -14,7 +16,7 @@ public class InventorySystem {
 	}
 	
 	// Print out the inventory
-	public void PrintInventory()
+	public static void PrintInventory()
 	{
 		// For each item, print the item name and the quantities left
 		for (int i=0; i < item.length; i++)
@@ -26,7 +28,7 @@ public class InventorySystem {
 	}
 	
 	// Read the inventory from a file
-	private void ReadInventory()
+	public static void ReadInventory()
 	{
 		// Read the inventory from the "Data/Inventory.txt" file
 		String[] tmp = IO.ReadFile("Data/Inventory.txt");

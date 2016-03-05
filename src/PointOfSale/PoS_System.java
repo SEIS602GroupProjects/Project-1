@@ -5,14 +5,13 @@ import java.util.Scanner;
 public class PoS_System {
 
 	private LoginSystem logSys;
-	private InventorySystem invSys;
 	private Cashier cashier;
 	
 	public PoS_System()
 	{
 		logSys = new LoginSystem();
-		invSys = new InventorySystem();
 		cashier = new Cashier();
+		InventorySystem.ReadInventory();
 	}
 	
 	public void Run()
@@ -74,7 +73,7 @@ public class PoS_System {
 		}
 		else if (cmd.equals("inventory"))
 		{
-			invSys.PrintInventory();
+			InventorySystem.PrintInventory();
 		}
 		else
 		{
