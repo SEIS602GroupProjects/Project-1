@@ -37,6 +37,16 @@ public class IOSystem {
 		
 	}
 	
+	public void WriteFile(String[] fileToWriteTo)
+	{
+		// Take in String array of lines,
+		// output lines to a file
+		
+		
+		
+		
+	}
+	
 	// Return the # of lines in a file
 	// Used for ReadFile()
 	private int FileLength(String fileToRead)
