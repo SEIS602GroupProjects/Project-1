@@ -18,7 +18,7 @@ public class PoS_System {
 	public void Run()
 	{
 		String tmp = "";
-		//logSys.Login();
+		logSys.Login();
 		
 		Scanner in = new Scanner(System.in);		
 		System.out.println("Choose a Register (1-3): ");
@@ -26,15 +26,21 @@ public class PoS_System {
 		while (true)
 		{
 			tmp = in.nextLine();
-			int tmpInt = Integer.parseInt(tmp);
-			if (tmpInt >= 1 && tmpInt <= 3)
-			{
-				cashier.ChooseRegister(Integer.parseInt(tmp));
-				break;
+			try {
+				int tmpInt = Integer.parseInt(tmp);
+				if (tmpInt >= 1 && tmpInt <= 3)
+				{
+					cashier.ChooseRegister(tmpInt);
+					break;
+				}
+				else
+				{
+					System.out.println("Invalid Register #. Please choose a valid one (1-3).");
+				}
 			}
-			else
+			catch (NumberFormatException e)
 			{
-				System.out.println("Invalid Register. Please choose a valid one (1-3).");
+				System.out.println("Invalid Register #. Please choose a valid one (1-3).");
 			}
 		}
 		
@@ -108,6 +114,7 @@ public class PoS_System {
 				System.out.println("Wrong formatting. Please type sell [item] [quantity].");
 			}
 		}
+		// Copy/paste/edit for add/remove inventory/set threshold
 		else if (tmp_split[0].equals("return"))
 		{
 			if (tmp_split.length == 3) 

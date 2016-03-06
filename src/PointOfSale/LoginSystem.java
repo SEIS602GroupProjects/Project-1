@@ -1,5 +1,7 @@
 package PointOfSale;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 public class LoginSystem {
@@ -57,9 +59,14 @@ public class LoginSystem {
 							isCorrect = true;
 							curUser = usernames[i];
 							// Break out of while loop checking for password
+							LoggingSystem.logAction(GetDateTime() + " || " +
+									"Login Complete: '" + tmp + "' allowed access to the system.");
 							break;
 						}
 						// If the password inputed isn't correct, ask for it again
+						LoggingSystem.logAction(GetDateTime() + " || " +
+								"INVALID PASSWORD BY USER: " + "'"
+								+ tmp + "'");
 						System.out.println("Password not found. Enter again.");
 					}					
 				}
@@ -73,6 +80,7 @@ public class LoginSystem {
 			}
 			// If an incorrect username was typed in, ask for the username again
 			System.out.println("Username " + tmp + " not found. Please try again.");
+			LoggingSystem.logAction("INVALID LOGIN ATTEMPT BY USER: '" + tmp + "'");
 		}
 	}
 	
@@ -80,6 +88,12 @@ public class LoginSystem {
 	public void Logout()
 	{
 		
+	}
+	
+	private String GetDateTime()
+	{
+		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+		return dateFormat.format(new Date());
 	}
 	
 	private void readLoginData()

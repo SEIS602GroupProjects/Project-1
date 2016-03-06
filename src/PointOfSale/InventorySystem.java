@@ -2,12 +2,11 @@ package PointOfSale;
 
 public class InventorySystem {
 	
-	private static Items[] item;
+	private static Item[] items;
 	
-	
-	public static Items[] items()
+	public static Item[] items()
 	{
-		return item;
+		return items;
 	}
 	
 	
@@ -20,10 +19,10 @@ public class InventorySystem {
 	public static void PrintInventory()
 	{
 		// For each item, print the item name and the quantities left
-		for (int i=0; i < item.length; i++)
+		for (int i=0; i < items.length; i++)
 		{
-			System.out.print(item[i].getName() + " : " + item[i].getQuantity()
-					+" Price : "+item[i].getPrice());
+			System.out.print(items[i].getName() + " : " + items[i].getQuantity()
+					+" Price : "+items[i].getPrice());
 			System.out.println();
 		}
 	}
@@ -33,7 +32,7 @@ public class InventorySystem {
 	{
 		// Read the inventory from the "Data/Inventory.txt" file
 		String[] tmp = IOSystem.ReadFile("Data/Inventory.txt");
-		item = new Items[tmp.length];
+		items = new Item[tmp.length];
 		
 		// For each line in the file
 		for (int i=0; i < tmp.length; i++)
@@ -43,10 +42,12 @@ public class InventorySystem {
 			String[] tmp_split = tmp[i].split(";");
 			
 			
-			item[i]= new Items(tmp_split[1],
-					Integer.parseInt(tmp_split[2]), 
+			items[i]= new Item(Integer.parseInt(tmp_split[0]),
+					tmp_split[1], 
+					Integer.parseInt(tmp_split[2]),
 					Double.parseDouble(tmp_split[3]),
-					Integer.parseInt(tmp_split[0]));
+					Integer.parseInt(tmp_split[4]),
+					Boolean.parseBoolean(tmp_split[5]));
 			// For example, tmp[0] == "apples=10" gets stored as
 			// items[0] == "apples"
 			// quantities[0] == "10"
@@ -56,23 +57,14 @@ public class InventorySystem {
 		}
 	}
 	
-	// Add item(s) to the inventory
-	// Take in a string for the item value, int for quantity
-	public void Add(String item, int quant)
+	public static void FillInventory()
 	{
-		// TO DO
-	}
-
-	// Remove item(s) to the inventory
-	public void Remove(String item, int quant)
-	{
-		// TO DO
-	}
-	
-	// Get information on an item
-	public void Lookup(String item)
-	{
-		// TO DO
-	
+		for (int i=0; i < items.length; i++)
+		{
+			if (items[i].getQuantity() < items[i].getThreshold())
+			{
+				items[i].setIsReorder(true);
+			}
+		}
 	}
 }

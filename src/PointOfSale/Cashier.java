@@ -1,5 +1,8 @@
 package PointOfSale;
 
+import java.util.Date;
+import java.text.SimpleDateFormat;
+
 public class Cashier {
 	private Register drawer;
 	
@@ -16,7 +19,7 @@ public class Cashier {
 	// Sell a quantity of an item 
 	public void Sell(String item, int quant)
 	{
-		Items curItem = findItem(item);
+		Item curItem = findItem(item);
 		
 		if (curItem == null)
 		{
@@ -30,7 +33,14 @@ public class Cashier {
 				curItem.remveQuantity(quant);
 				double actualTransaction = ((curItem.getPrice() * 100) * quant) / 100;
 				drawer.AddMoney(actualTransaction);
-				System.out.println(quant + " " + item + " sold for " + actualTransaction);
+				System.out.println(quant + " " + item + " sold for $" + actualTransaction);
+				LoggingSystem.logAction(GetDateTime() + " || " +
+						"User " + LoginSystem.getCurUser() +
+						" On Register #" + drawer.GetRegisterID() +
+						": Sold " + quant + " " + item + 
+						" for $" + actualTransaction);
+				InventorySystem.FillInventory();
+				UpdateInventory();
 			}
 			else
 			{
@@ -39,13 +49,12 @@ public class Cashier {
 			}
 		}
 		
-		// TO DO
 	}
 	
 	// Return a quantity of an item
 	public void Return(String item, int quant)
 	{
-		Items curItem = findItem(item);
+		Item curItem = findItem(item);
 		
 		if (curItem == null)
 		{
@@ -57,7 +66,13 @@ public class Cashier {
 			curItem.addQuantity(quant);
 			double actualTransaction = ((curItem.getPrice() * 100) * quant) / 100;
 			drawer.RemoveMoney(actualTransaction);
-			System.out.println(quant + " " + item + " returned for " + actualTransaction);
+			System.out.println(quant + " " + item + " returned for $" + actualTransaction);
+			LoggingSystem.logAction(GetDateTime() + " || " +
+					"User " + LoginSystem.getCurUser() +
+					" On Register #" + drawer.GetRegisterID() +
+					": Returned " + quant + " " + item + 
+					" for $" + actualTransaction);
+			UpdateInventory();
 		}
 		// TO DO
 	}
@@ -65,7 +80,7 @@ public class Cashier {
 	// Report information on an item (name, quantity, price, etc.)
 	public void ItemInfo(String item)
 	{
-		Items curItem = findItem(item);
+		Item curItem = findItem(item);
 		
 		if (curItem == null)
 		{
@@ -78,7 +93,27 @@ public class Cashier {
 					"\nQuantity: " + curItem.getQuantity() + 
 					"\nPrice: " + curItem.getPrice()); 
 		}
-		// TO DO
+	}
+	
+	private void UpdateInventory()
+	{
+		String[] tmp = new String[InventorySystem.items().length];
+		for (int i=0; i < tmp.length; i++)
+		{
+			tmp[i] = InventorySystem.items()[i].getUpc() + ";" +
+					InventorySystem.items()[i].getName() + ";" +
+					InventorySystem.items()[i].getQuantity() + ";" +
+					InventorySystem.items()[i].getPrice() + ";" +
+					InventorySystem.items()[i].getThreshold() + ";" +
+					InventorySystem.items()[i].getIsReorder();
+		}
+		IOSystem.WriteFile(tmp, "Data/Inventory.txt");
+	}
+	
+	private String GetDateTime()
+	{
+		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+		return dateFormat.format(new Date());
 	}
 	
 	// Re-order inventory
@@ -88,7 +123,7 @@ public class Cashier {
 		// TO DO
 	}
 	
-	public Items findItem(String itemName)
+	public Item findItem(String itemName)
 	{
 		for (int i=0; i < InventorySystem.items().length; i++)
 		{
