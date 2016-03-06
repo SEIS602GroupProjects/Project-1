@@ -7,10 +7,17 @@ public class LoginSystem {
 	private IOSystem IO = new IOSystem();
 	private String[] usernames;
 	private String[] passwords;
+	private static String curUser = "";
 	
 	public LoginSystem()
 	{
 		readLoginData();
+	}
+	
+	// Get current logged in user
+	public static String getCurUser()
+	{
+		return curUser;
 	}
 	
 	public void Login()
@@ -50,14 +57,13 @@ public class LoginSystem {
 							// Welcome the user to the system, give them access
 							System.out.println("Welcome, " + tmp + ". Electronic-Sales Counter system started.");
 							isCorrect = true;
+							curUser = usernames[i];
 							// Break out of while loop checking for password
 							break;
 						}
 						// If the password inputed isn't correct, ask for it again
 						System.out.println("Password not found. Enter again.");
-					}
-					// Break out of the for loop that's checking usernames
-					break;
+					}					
 				}
 			}
 			

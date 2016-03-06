@@ -8,6 +8,10 @@ public class InventorySystem {
 	private static Items[] item;
 	
 	
+	public static Items[] items()
+	{
+		return item;
+	}
 	
 	
 	public InventorySystem()

@@ -10,7 +10,7 @@ import java.io.IOException;
 public class IOSystem {
 	
 	// Import a file's contents line by line 
-	public String[] ReadFile(String fileToRead)
+	public static String[] ReadFile(String fileToRead)
 	{
 		// Temporary string array to store the contents in
 		// String str's length is equal to the number of lines in the file
@@ -39,7 +39,7 @@ public class IOSystem {
 		
 	}
 	
-	public void AppendFile(String[] toWrite, String fileLoc)
+	public static void AppendFile(String[] toWrite, String fileLoc)
 	{
 		// Take in String array of lines,
 		// output lines to a file
@@ -61,7 +61,7 @@ public class IOSystem {
 	
 	// Return the # of lines in a file
 	// Used for ReadFile()
-	private int FileLength(String fileToRead)
+	private static int FileLength(String fileToRead)
 	{
 		// lines in file variable
 		int tmp = 0;

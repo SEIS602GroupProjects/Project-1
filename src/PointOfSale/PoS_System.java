@@ -68,12 +68,19 @@ public class PoS_System {
 		}
 		else if (cmd.equals("drawer"))
 		{
-			// Do something
-			
+			// Do something	
 		}
 		else if (cmd.equals("inventory"))
 		{
 			InventorySystem.PrintInventory();
+		}
+		else if (cmd.equals("user"))
+		{
+			System.out.println(LoginSystem.getCurUser());
+		}
+		else if (cmd.equals("sell"))
+		{
+			cashier.Sell("apples", 0);
 		}
 		else
 		{

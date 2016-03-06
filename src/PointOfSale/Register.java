@@ -1,19 +1,21 @@
 package PointOfSale;
 
-public class Drawer {
+public class Register {
 	
 	// Money in drawer
-	private double curMoney; 
+	private double curMoney = 15.00; 
 	
 	// Add money to the drawer
 	public void AddMoney(double money)
 	{
+		curMoney += money;
 		// TO DO
 	}
 	
 	// Remove money from the drawer
 	public void RemoveMoney(double money)
 	{
+		curMoney -= money;
 		// TO DO
 	}
 	
@@ -22,4 +24,6 @@ public class Drawer {
 	{
 		return curMoney;
 	}
+	
+	
 }
