@@ -1,8 +1,10 @@
 package PointOfSale;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class IOSystem {
@@ -37,14 +39,24 @@ public class IOSystem {
 		
 	}
 	
-	public void WriteFile(String[] fileToWriteTo)
+	public void AppendFile(String[] toWrite, String fileLoc)
 	{
 		// Take in String array of lines,
 		// output lines to a file
+		// APPEND the file
 		
-		
-		
-		
+		try {
+			BufferedWriter bWrite = new BufferedWriter(new FileWriter(fileLoc, true));
+			for (int i=0; i < toWrite.length; i++)
+			{
+				bWrite.write(toWrite[i]);
+				bWrite.newLine();
+			}
+			bWrite.flush();
+			bWrite.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}		
 	}
 	
 	// Return the # of lines in a file
