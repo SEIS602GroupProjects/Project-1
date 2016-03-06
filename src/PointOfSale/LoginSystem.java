@@ -3,8 +3,6 @@ package PointOfSale;
 import java.util.Scanner;
 
 public class LoginSystem {
-
-	private IOSystem IO = new IOSystem();
 	private String[] usernames;
 	private String[] passwords;
 	private static String curUser = "";
@@ -86,7 +84,7 @@ public class LoginSystem {
 	
 	private void readLoginData()
 	{
-		String[] tmp = IO.ReadFile("Data/loginInfo.txt");
+		String[] tmp = IOSystem.ReadFile("Data/loginInfo.txt");
 		usernames = new String[tmp.length];
 		passwords = new String[tmp.length];
 		

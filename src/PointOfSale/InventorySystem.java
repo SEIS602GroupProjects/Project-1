@@ -1,9 +1,6 @@
 package PointOfSale;
 
 public class InventorySystem {
-
-	private static IOSystem IO = new IOSystem();
-	
 	
 	private static Items[] item;
 	
@@ -35,15 +32,8 @@ public class InventorySystem {
 	public static void ReadInventory()
 	{
 		// Read the inventory from the "Data/Inventory.txt" file
-		String[] tmp = IO.ReadFile("Data/Inventory.txt");
-
-		 
-		
-		
-	
-		
-		item =new Items[tmp.length];
-		
+		String[] tmp = IOSystem.ReadFile("Data/Inventory.txt");
+		item = new Items[tmp.length];
 		
 		// For each line in the file
 		for (int i=0; i < tmp.length; i++)

@@ -1,7 +1,17 @@
 package PointOfSale;
 
 public class Cashier {
-	Register drawer = new Register();
+	private Register drawer;
+	
+	public void ChooseRegister(int register)
+	{
+		drawer = new Register(register);
+	}
+	
+	public Register GetDrawer()
+	{
+		return drawer;
+	}
 	
 	// Sell a quantity of an item 
 	public void Sell(String item, int quant)
@@ -10,13 +20,23 @@ public class Cashier {
 		
 		if (curItem == null)
 		{
-			System.out.println("Item " + item + " not found. Please enter a valid item name");
+			System.out.println("Item " + item + " not found. Please enter a valid item name.");
 		}
 		else
 		{
 			// If we have the item, lower quantity, add money to drawer, etc.
-			curItem.remveQuantity(quant);
-			drawer.AddMoney(curItem.getPrice() * quant);
+			if (curItem.getQuantity() >= quant)
+			{
+				curItem.remveQuantity(quant);
+				double actualTransaction = ((curItem.getPrice() * 100) * quant) / 100;
+				drawer.AddMoney(actualTransaction);
+				System.out.println(quant + " " + item + " sold for " + actualTransaction);
+			}
+			else
+			{
+				System.out.println("Not enough " + item + " in inventory to sell. Only "
+						+ curItem.getQuantity() + " " + item + " available.");
+			}
 		}
 		
 		// TO DO
@@ -35,7 +55,9 @@ public class Cashier {
 		{
 			// If we have the item, lower quantity, add money to drawer, etc.
 			curItem.addQuantity(quant);
-			drawer.RemoveMoney(curItem.getPrice() * quant);
+			double actualTransaction = ((curItem.getPrice() * 100) * quant) / 100;
+			drawer.RemoveMoney(actualTransaction);
+			System.out.println(quant + " " + item + " returned for " + actualTransaction);
 		}
 		// TO DO
 	}
@@ -52,9 +74,9 @@ public class Cashier {
 		else
 		{
 			System.out.println("Item: " + curItem.getName() +
-					"\n UPC: " + curItem.getUpc() + 
-					"\n Quantity: " + curItem.getQuantity() + 
-					"\n Price: " + curItem.getPrice()); 
+					"\nUPC: " + curItem.getUpc() + 
+					"\nQuantity: " + curItem.getQuantity() + 
+					"\nPrice: " + curItem.getPrice()); 
 		}
 		// TO DO
 	}
@@ -72,7 +94,7 @@ public class Cashier {
 		{
 			if (itemName.equals(InventorySystem.items()[i].getName()))
 			{
-				System.out.println("item " + InventorySystem.items()[i].getName() +  " found.");
+				//System.out.println("item " + InventorySystem.items()[i].getName() +  " found.");
 				return InventorySystem.items()[i];
 			}
 		}
