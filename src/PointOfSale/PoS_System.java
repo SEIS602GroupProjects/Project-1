@@ -133,6 +133,42 @@ public class PoS_System {
 				System.out.println("Wrong formatting. Please type return [item] [quantity].");
 			}
 		}
+		else if (tmp_split[0].equals("add"))
+		{
+			if (tmp_split.length == 3) 
+			{
+				try 
+				{
+					cashier.addToInventory(tmp_split[1], Integer.parseInt(tmp_split[2]));
+				}
+				catch (NumberFormatException e) 
+				{
+					System.out.println("Wrong formatting. Please type add [item] [quantity].");
+				}
+			} 
+			else 
+			{
+				System.out.println("Wrong formatting. Please type add [item] [quantity].");
+			}
+		}
+		else if (tmp_split[0].equals("remove"))
+		{
+			if (tmp_split.length == 3) 
+			{
+				try 
+				{
+					cashier.removeFromInventory(tmp_split[1], Integer.parseInt(tmp_split[2]));
+				}
+				catch (NumberFormatException e) 
+				{
+					System.out.println("Wrong formatting. Please type remove [item] [quantity].");
+				}
+			} 
+			else 
+			{
+				System.out.println("Wrong formatting. Please type remove [item] [quantity].");
+			}
+		}
 		else if (tmp_split[0].equals("info"))
 		{
 			if (tmp_split.length == 2) 

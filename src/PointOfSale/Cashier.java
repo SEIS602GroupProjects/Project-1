@@ -136,5 +136,39 @@ public class Cashier {
 	
 		return null;
 	}
-	
+	public void addToInventory(String itemName, int quant){
+Item curItem = findItem(itemName);
+		
+		if (curItem == null)
+		{
+			System.out.println("Item " + itemName + " not found. Please enter a valid item name");
+		}
+		else
+		{
+			// If we have the item, lower quantity, add money to drawer, etc.
+			curItem.addQuantity(quant);
+			System.out.println(quant + " " + itemName + " added to inventory" );
+			LoggingSystem.logAction(GetDateTime() + " || " +
+					"User " + LoginSystem.getCurUser() +
+					": added " + quant + " " + itemName +" to inventory");
+					
+	}
+	}
+	public void removeFromInventory(String itemName, int quant){
+Item curItem = findItem(itemName);
+		
+		if (curItem == null)
+		{
+			System.out.println("Item " + itemName + " not found. Please enter a valid item name");
+		}
+		else
+		{
+			// If we have the item, lower quantity, add money to drawer, etc.
+	       curItem.remveQuantity(quant);
+	       System.out.println(quant + " " + itemName + " removed from inventory" );
+			LoggingSystem.logAction(GetDateTime() + " || " +
+					"User " + LoginSystem.getCurUser() +
+					": removed " + quant + " " + itemName +" from inventory");
+	}
+	}
 }

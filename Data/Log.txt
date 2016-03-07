@@ -44,3 +44,10 @@
 03/06/2016 16:32:44 || User admin On Register #2: Sold 1 apples for $1.05
 03/06/2016 16:34:10 || Login Complete: 'admin' allowed access to the system.
 03/06/2016 16:34:13 || User admin On Register #2: Sold 1 apples for $1.05
+03/06/2016 16:57:29 || Login Complete: 'admin' allowed access to the system.
+03/06/2016 17:04:53 || Login Complete: 'admin' allowed access to the system.
+03/06/2016 17:05:16 || User admin On Register #2: Sold 4 apples for $4.2
+03/06/2016 17:05:36 || User admin: added 3 apples to inventory
+03/06/2016 18:09:01 || Login Complete: 'admin' allowed access to the system.
+03/06/2016 18:09:35 || User admin: added 3 apples to inventory
+03/06/2016 18:09:57 || User admin: removed 3 apples from inventory
