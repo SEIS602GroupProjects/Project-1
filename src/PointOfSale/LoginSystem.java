@@ -7,7 +7,9 @@ import java.util.Scanner;
 public class LoginSystem {
 	private String[] usernames;
 	private String[] passwords;
+	private int[] validRegisters;
 	private static String curUser = "";
+	private static int curRegister = 0;
 	
 	public LoginSystem()
 	{
@@ -20,7 +22,7 @@ public class LoginSystem {
 		return curUser;
 	}
 	
-	public void Login()
+	public void Login(Scanner in)
 	{
 		boolean isCorrect = false;
 		String tmp = "";
@@ -28,8 +30,6 @@ public class LoginSystem {
 		
 		// Ask for username
 		System.out.println("Please enter your username:");
-		
-		Scanner in = new Scanner(System.in);
 		
 		// Keep asking for username until valid one given
 		while (true)
@@ -61,6 +61,8 @@ public class LoginSystem {
 							// Break out of while loop checking for password
 							LoggingSystem.logAction(GetDateTime() + " || " +
 									"Login Complete: '" + tmp + "' allowed access to the system.");
+							LoggingSystem.logRegister(GetDateTime() + " || " +
+									"Login Complete: '" + tmp + "' allowed access to the system.");
 							break;
 						}
 						// If the password inputed isn't correct, ask for it again
@@ -80,14 +82,72 @@ public class LoginSystem {
 			}
 			// If an incorrect username was typed in, ask for the username again
 			System.out.println("Username " + tmp + " not found. Please try again.");
-			LoggingSystem.logAction("INVALID LOGIN ATTEMPT BY USER: '" + tmp + "'");
+			LoggingSystem.logAction(GetDateTime() + " || " +
+					"INVALID LOGIN ATTEMPT WITH USERNAME '" + tmp + "'");
 		}
 	}
 	
-	// TO DO: LOGOUT 
+	// Choose a register
+	public void ChooseRegister(Scanner in, Cashier cashier)
+	{
+		readRegisterData();
+		String tmp = "";
+		boolean isCorrect = false;
+		
+		System.out.print("Choose an active register (");
+		PrintValidRegisters();
+		System.out.println("): ");
+		
+		while (true)
+		{
+			tmp = in.nextLine();
+			try {
+				int tmpInt = Integer.parseInt(tmp);
+				for (int i=0; i < validRegisters.length; i++)
+				{
+					if (tmpInt == validRegisters[i])
+					{
+						cashier.SetRegister(tmpInt);
+						curRegister = tmpInt;
+						isCorrect = true;
+						break;
+					}
+				}
+				if (isCorrect)
+				{
+					LoggingSystem.logAction(GetDateTime() + " || " + "User '" + 
+										curUser + "' is now on Register #" + curRegister);
+					LoggingSystem.logRegister(GetDateTime() + " || " + "User '" + 
+							curUser + "' is now on Register #" + curRegister);
+					cashier.InitSalesRecords();
+					break;
+				}
+				else
+				{
+					System.out.print("Invalid Register #. Please choose a valid one (");
+					PrintValidRegisters();
+					System.out.println("): ");
+				}
+			}
+			catch (NumberFormatException e)
+			{
+				System.out.print("Invalid Register #. Please choose a valid one (");
+				PrintValidRegisters();
+				System.out.println("): ");
+			}
+		}
+	}
+	
+	// Logout of system
 	public void Logout()
 	{
-		
+		LoggingSystem.logAction(GetDateTime() + " || " + "User '" + curUser + 
+						"' logged out. They left Register #" + curRegister);
+		LoggingSystem.logRegister(GetDateTime() + " || " + "User '" + curUser + 
+				"' logged out. They left Register #" + curRegister);
+		curUser = "";
+		curRegister = 0;
+		System.out.println("Logout successful.");
 	}
 	
 	private String GetDateTime()
@@ -96,6 +156,7 @@ public class LoginSystem {
 		return dateFormat.format(new Date());
 	}
 	
+	// Get valid login info
 	private void readLoginData()
 	{
 		String[] tmp = IOSystem.ReadFile("Data/loginInfo.txt");
@@ -109,6 +170,36 @@ public class LoginSystem {
 			passwords[i] = tmp_split[1];
 		}
 	}
+	
+	// Get active/existing registers
+	private void readRegisterData()
+	{
+		String[] tmp = IOSystem.ReadFile("Data/registerInfo.txt");
+		validRegisters = new int[tmp.length];
+		
+		for (int i=0; i < tmp.length; i++)
+		{
+			String[] tmp_split = tmp[i].split(";");
+			validRegisters[i] = Integer.parseInt(tmp_split[0]);
+			//System.out.println(validRegisters[i]);
+		}
+	}
+	
+	private void PrintValidRegisters()
+	{
+		for (int i=0; i < validRegisters.length; i++)
+		{
+			if (i != validRegisters.length-1)
+			{
+				System.out.print(validRegisters[i] + ",");
+			}
+			else
+			{
+				System.out.print(validRegisters[i]);
+			}
+		}
+	}
+	
 	
 	
 }

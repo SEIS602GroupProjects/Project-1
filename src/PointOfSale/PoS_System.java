@@ -1,12 +1,13 @@
 package PointOfSale;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 public class PoS_System {
 
 	private LoginSystem logSys;
 	private Cashier cashier;
+	private Scanner in;
+	private String tmp = "";
 	
 	public PoS_System()
 	{
@@ -17,34 +18,11 @@ public class PoS_System {
 	
 	public void Run()
 	{
-		String tmp = "";
-		logSys.Login();
+		in = new Scanner(System.in);
+		logSys.Login(in);
+		logSys.ChooseRegister(in, cashier);
 		
-		Scanner in = new Scanner(System.in);		
-		System.out.println("Choose a Register (1-3): ");
-		
-		while (true)
-		{
-			tmp = in.nextLine();
-			try {
-				int tmpInt = Integer.parseInt(tmp);
-				if (tmpInt >= 1 && tmpInt <= 3)
-				{
-					cashier.ChooseRegister(tmpInt);
-					break;
-				}
-				else
-				{
-					System.out.println("Invalid Register #. Please choose a valid one (1-3).");
-				}
-			}
-			catch (NumberFormatException e)
-			{
-				System.out.println("Invalid Register #. Please choose a valid one (1-3).");
-			}
-		}
-		
-		System.out.println("Please enter a command:");
+		System.out.println("Please enter a command (or type 'help'):");
 		while (true)
 		{
 			tmp = in.nextLine();
@@ -53,24 +31,28 @@ public class PoS_System {
 			{
 				break;
 			}
-			System.out.println("Please enter a command:");
+			System.out.println("Please enter a command (or type 'help'):");
 		}
 		in.close();
 		
-		System.out.println();
 		System.out.println("System shutdown complete.");
 	}
 	
 	private void Help()
 	{
 		System.out.println("List of Commands: ");
-		System.out.println("openDrawer -               Check current money in drawer.");
+		System.out.println("drawer -                   Check current money in drawer.");
 		System.out.println("user -                     Check current user.");
 		System.out.println("sell [item] [quantity] -   Sell a quantity of an item.");
 		System.out.println("return [item] [quantity] - Return a quantity of an item.");
+		System.out.println("add [item] [quantity] -    Add items to the inventory.");
+		System.out.println("remove [item] [quantity] - Remove items from the inventory.");
 		System.out.println("info [item] -              Check item information.");
-		System.out.println("exit -                     Exit and shut down system.");
 		System.out.println("inventory -                Check current inventory.");
+		System.out.println("actionlog -                Print out the log of actions taken");
+		System.out.println("saleslog -                 Print out the log of sales made");
+		System.out.println("logout -                   Log out of system and let another user log in.");
+		System.out.println("exit -                     Exit and shut down system.");
 	}
 	
 	// Place to add new commands to
@@ -86,6 +68,7 @@ public class PoS_System {
 		}
 		else if (tmp_split[0].equals("exit"))
 		{
+			logSys.Logout();
 			return false;
 		}
 		else if (tmp_split[0].equals("inventory"))
@@ -187,9 +170,25 @@ public class PoS_System {
 				System.out.println("Wrong formatting. Please type info [item].");
 			}
 		}
-		else if (tmp_split[0].equals("openDrawer"))
+		else if (tmp_split[0].equals("drawer"))
 		{
-			System.out.println(cashier.GetDrawer().MoneyInDrawer());
+			System.out.println("Total Sales during shift: $" + cashier.ShiftSales());
+			System.out.println("Cash in Register #" + cashier.GetDrawer().GetRegisterID() +
+							": $" + cashier.GetDrawer().MoneyInDrawer());
+		}
+		else if (tmp_split[0].equals("actionlog"))
+		{
+			LoggingSystem.PrintActionLog();
+		}
+		else if (tmp_split[0].equals("saleslog"))
+		{
+			LoggingSystem.PrintRegisterLog();
+		}
+		else if (tmp_split[0].equals("logout"))
+		{
+			logSys.Logout();
+			logSys.Login(in);
+			logSys.ChooseRegister(in, cashier);
 		}
 		else
 		{

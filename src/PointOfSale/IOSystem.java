@@ -78,7 +78,8 @@ public class IOSystem {
 				if (i < toWrite.length-1)
 				{
 					fWrite.write(toWrite[i] + "\n");
-				}else
+				}
+				else
 				{
 					fWrite.write(toWrite[i]);
 				}
@@ -114,8 +115,5 @@ public class IOSystem {
 		}
 	
 		return tmp;
-	}
-	
-	
-	
+	}	
 }

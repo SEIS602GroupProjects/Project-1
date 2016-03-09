@@ -51,3 +51,101 @@
 03/06/2016 18:09:01 || Login Complete: 'admin' allowed access to the system.
 03/06/2016 18:09:35 || User admin: added 3 apples to inventory
 03/06/2016 18:09:57 || User admin: removed 3 apples from inventory
+03/08/2016 21:37:30 || Login Complete: 'admin' allowed access to the system.
+03/08/2016 21:37:48 || User admin: added 3 apples to inventory
+03/08/2016 21:37:54 || User admin: removed 3 apples from inventory
+03/08/2016 21:38:05 || User admin On Register #2: Sold 3 apples for $3.15
+03/08/2016 21:47:26 || Login Complete: 'admin' allowed access to the system.
+03/08/2016 23:06:00 || Login Complete: 'admin' allowed access to the system.
+03/08/2016 23:10:38 || INVALID LOGIN ATTEMPT WITH USERNAME 'werwer'
+03/08/2016 23:18:30 || User  On Register #2: Sold 3 apples for $3.15
+03/08/2016 23:18:58 || User  On Register #2: Sold 3 apples for $3.15
+03/08/2016 23:19:01 || User  On Register #2: Sold 3 apples for $3.15
+03/08/2016 23:19:03 || User  On Register #2: Sold 3 apples for $3.15
+03/08/2016 23:19:05 || User  On Register #2: Sold 3 oranges for $2.85
+03/08/2016 23:19:08 || User  On Register #2: Sold 4 apples for $4.2
+03/08/2016 23:19:25 || User  On Register #2: Sold 3 apples for $3.15
+03/08/2016 23:31:11 || User  On Register #2: Sold 3 apples for $3.15
+03/08/2016 23:31:32 || User  On Register #2: Sold 5 apples for $5.25
+03/08/2016 23:31:38 || User  On Register #2: Sold 2 oranges for $1.9
+03/08/2016 23:51:53 || User  On Register #2: Sold 3 apples for $3.15
+03/08/2016 23:55:50 || Login Complete: 'admin' allowed access to the system.
+03/08/2016 23:57:07 || Login Complete: 'test' allowed access to the system.
+03/08/2016 23:57:22 || Login Complete: 'test' allowed access to the system.
+03/08/2016 23:57:48 || Login Complete: 'test' allowed access to the system.
+03/08/2016 23:58:41 || Login Complete: 'test' allowed access to the system.
+03/08/2016 23:59:04 || Login Complete: 'test' allowed access to the system.
+03/09/2016 00:00:11 || Login Complete: 'test' allowed access to the system.
+03/09/2016 00:00:38 || Login Complete: 'test' allowed access to the system.
+03/09/2016 00:01:08 || Login Complete: 'test' allowed access to the system.
+03/09/2016 00:02:35 || Login Complete: 'test' allowed access to the system.
+03/09/2016 00:04:05 || Login Complete: 'test' allowed access to the system.
+03/09/2016 00:04:14 || Login Complete: 'test' allowed access to the system.
+03/09/2016 00:04:20 || INVALID LOGIN ATTEMPT WITH USERNAME 'erewr'
+03/09/2016 00:04:22 || Login Complete: 'test' allowed access to the system.
+03/09/2016 00:05:28 || Login Complete: 'test' allowed access to the system.
+03/09/2016 00:08:56 || Login Complete: 'test' allowed access to the system.
+03/09/2016 00:09:06 || User test On Register #2: Sold 3 apples for $3.15
+03/09/2016 00:11:29 || Login Complete: 'test' allowed access to the system.
+03/09/2016 00:11:56 || Login Complete: 'test' allowed access to the system.
+03/09/2016 00:13:05 || Login Complete: 'test' allowed access to the system.
+03/09/2016 00:13:21 || Login Complete: 'test' allowed access to the system.
+03/09/2016 00:15:47 || Login Complete: 'test' allowed access to the system.
+03/09/2016 00:20:49 || Login Complete: 'test' allowed access to the system.
+03/09/2016 00:21:33 || Login Complete: 'test' allowed access to the system.
+03/09/2016 00:22:26 || Login Complete: 'test' allowed access to the system.
+03/09/2016 00:23:55 || Login Complete: 'test' allowed access to the system.
+03/09/2016 00:25:47 || Login Complete: 'test' allowed access to the system.
+03/09/2016 00:26:39 || Login Complete: 'test' allowed access to the system.
+03/09/2016 00:26:51 || Login Complete: 'test' allowed access to the system.
+03/09/2016 00:29:56 || Login Complete: 'test' allowed access to the system.
+03/09/2016 00:29:57 || User test is now on register #2
+03/09/2016 00:30:04 || Login Complete: 'admin' allowed access to the system.
+03/09/2016 00:30:08 || User admin is now on register #6
+03/09/2016 00:32:37 || Login Complete: 'test' allowed access to the system.
+03/09/2016 00:34:04 || Login Complete: 'test' allowed access to the system.
+03/09/2016 00:34:06 || User 'test' is now on register #3
+03/09/2016 00:34:09 || User 'test' logged out. They left Register #3
+03/09/2016 00:34:15 || Login Complete: 'admin' allowed access to the system.
+03/09/2016 00:34:16 || User 'admin' is now on register #6
+03/09/2016 00:34:17 || User 'admin' logged out. They left Register #6
+03/09/2016 00:34:25 || Login Complete: 'test' allowed access to the system.
+03/09/2016 00:34:26 || User 'test' is now on register #1
+03/09/2016 00:34:29 || User 'test' logged out. They left Register #1
+03/09/2016 00:43:39 || INVALID PASSWORD BY USER: 'test'
+03/09/2016 00:43:41 || Login Complete: 'test' allowed access to the system.
+03/09/2016 00:43:44 || User 'test' is now on Register #2
+03/09/2016 00:43:44 || User 'test' logged out. They left Register #2
+03/09/2016 00:48:17 || Login Complete: 'test' allowed access to the system.
+03/09/2016 00:48:19 || User 'test' is now on Register #2
+03/09/2016 00:48:22 || User test On Register #2: Sold 5 apples for $5.25
+03/09/2016 00:48:25 || User test On Register #2: Sold 1 waffles for $5.49
+03/09/2016 00:48:34 || User test On Register #2: Returned 1 waffles for $5.49
+03/09/2016 00:48:42 || User test On Register #2: Returned 5 apples for $5.25
+03/09/2016 00:49:52 || INVALID PASSWORD BY USER: 'admin'
+03/09/2016 00:50:00 || INVALID PASSWORD BY USER: 'admin'
+03/09/2016 00:50:04 || Login Complete: 'admin' allowed access to the system.
+03/09/2016 00:50:06 || User 'admin' is now on Register #2
+03/09/2016 00:50:08 || User admin On Register #2: Sold 1 waffles for $5.49
+03/09/2016 00:50:12 || User admin On Register #2: Returned 2 waffles for $10.98
+03/09/2016 00:50:13 || User 'admin' logged out. They left Register #2
+03/09/2016 00:56:41 || Login Complete: 'test' allowed access to the system.
+03/09/2016 00:56:42 || User 'test' is now on Register #2
+03/09/2016 00:56:45 || User test On Register #2: Sold 2 apples for $2.1
+03/09/2016 00:56:47 || User 'test' logged out. They left Register #2
+03/09/2016 00:56:50 || Login Complete: 'admin' allowed access to the system.
+03/09/2016 00:56:52 || User 'admin' is now on Register #3
+03/09/2016 00:56:54 || User admin On Register #3: Sold 3 apples for $3.15
+03/09/2016 00:56:59 || User 'admin' logged out. They left Register #3
+03/09/2016 01:13:20 || Login Complete: 'test' allowed access to the system.
+03/09/2016 01:13:22 || User 'test' is now on Register #2
+03/09/2016 01:13:30 || User test On Register #2: Sold 3 apples for $3.15
+03/09/2016 01:13:36 || User test On Register #2: Sold 2 waffles for $10.98
+03/09/2016 01:13:44 || User test On Register #2: Returned 2 waffles for $10.98
+03/09/2016 01:14:01 || User 'test' logged out. They left Register #2
+03/09/2016 01:15:59 || Login Complete: 'test' allowed access to the system.
+03/09/2016 01:16:00 || User 'test' is now on Register #2
+03/09/2016 01:16:27 || User 'test' logged out. They left Register #2
+03/09/2016 01:18:25 || Login Complete: 'test' allowed access to the system.
+03/09/2016 01:18:27 || User 'test' is now on Register #6
+03/09/2016 01:18:36 || User 'test' logged out. They left Register #6
