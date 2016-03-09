@@ -51,3 +51,4 @@
 03/06/2016 18:09:01 || Login Complete: 'admin' allowed access to the system.
 03/06/2016 18:09:35 || User admin: added 3 apples to inventory
 03/06/2016 18:09:57 || User admin: removed 3 apples from inventory
+03/09/2016 17:07:44 || Login Complete: 'admin' allowed access to the system.

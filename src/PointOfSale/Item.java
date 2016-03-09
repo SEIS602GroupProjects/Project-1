@@ -36,6 +36,9 @@ public class Item {
 	public int getUpc(){
 		return this.upc;
 	}
+	public void setThreshold(int newThreshold){
+		this.threshold=newThreshold;
+	}
 	public int getThreshold()
 	{
 		return this.threshold;
@@ -48,4 +51,5 @@ public class Item {
 	{
 		this.isReorder = bool;
 	}
+	
 }

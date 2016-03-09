@@ -170,5 +170,27 @@ Item curItem = findItem(itemName);
 					"User " + LoginSystem.getCurUser() +
 					": removed " + quant + " " + itemName +" from inventory");
 	}
+	
+	
+	}
+	public void setThreshold(String itemName,int newThreshold ){
+		
+Item curItem = findItem(itemName);
+		
+		if (curItem == null)
+		{
+			System.out.println("Item " + itemName + " not found. Please enter a valid item name");
+		}
+		else
+		{
+			// If we have the item, lower quantity, add money to drawer, etc.
+			curItem.setThreshold(newThreshold);
+			System.out.println("the new threshold of "+itemName+" is: "+newThreshold);
+		//	System.out.println(newThreshold + " " + itemName + " changnig the threshold" );
+			LoggingSystem.logAction(GetDateTime() + " || " +
+					"User " + LoginSystem.getCurUser() +
+					": threshold of : " + itemName +" changed to "+newThreshold);
+					
+	}
 	}
 }
