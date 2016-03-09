@@ -65,6 +65,10 @@ public class InventorySystem {
 			{
 				items[i].setIsReorder(true);
 			}
+			else
+			{
+				items[i].setIsReorder(false);
+			}
 		}
 	
 	}

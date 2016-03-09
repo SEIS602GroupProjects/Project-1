@@ -1,0 +1,24 @@
+03/09/2016 00:49:52 || INVALID PASSWORD BY USER: 'admin'
+03/09/2016 00:50:00 || INVALID PASSWORD BY USER: 'admin'
+03/09/2016 00:50:04 || Login Complete: 'admin' allowed access to the system.
+03/09/2016 00:50:08 || Sale: Transaction #1 on Register #2: Sold 1 waffles for $5.49
+03/09/2016 00:50:12 || Return: Transaction #2 on Register #2: Returned 2 waffles for $10.98
+03/09/2016 00:50:13 || User 'admin' logged out. They left Register #2
+03/09/2016 00:56:41 || Login Complete: 'test' allowed access to the system.
+03/09/2016 00:56:45 || Sale: Transaction #1 on Register #2: Sold 2 apples for $2.1
+03/09/2016 00:56:47 || User 'test' logged out. They left Register #2
+03/09/2016 00:56:50 || Login Complete: 'admin' allowed access to the system.
+03/09/2016 00:56:54 || Sale: Transaction #2 on Register #3: Sold 3 apples for $3.15
+03/09/2016 00:56:59 || User 'admin' logged out. They left Register #3
+03/09/2016 01:13:20 || Login Complete: 'test' allowed access to the system.
+03/09/2016 01:13:22 || User 'test' is now on Register #2
+03/09/2016 01:13:30 || Sale: Transaction #1 on Register #2: Sold 3 apples for $3.15
+03/09/2016 01:13:36 || Sale: Transaction #2 on Register #2: Sold 2 waffles for $10.98
+03/09/2016 01:13:44 || Return: Transaction #3 on Register #2: Returned 2 waffles for $10.98
+03/09/2016 01:14:01 || User 'test' logged out. They left Register #2
+03/09/2016 01:15:59 || Login Complete: 'test' allowed access to the system.
+03/09/2016 01:16:00 || User 'test' is now on Register #2
+03/09/2016 01:16:27 || User 'test' logged out. They left Register #2
+03/09/2016 01:18:25 || Login Complete: 'test' allowed access to the system.
+03/09/2016 01:18:27 || User 'test' is now on Register #6
+03/09/2016 01:18:36 || User 'test' logged out. They left Register #6

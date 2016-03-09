@@ -5,15 +5,28 @@ import java.text.SimpleDateFormat;
 
 public class Cashier {
 	private Register drawer;
+	private String[] salesInfo;
+	private double shiftSales = 0.0;
+		
+	public Register GetDrawer()
+	{
+		return drawer;
+	}
 	
-	public void ChooseRegister(int register)
+	public void SetRegister(int register)
 	{
 		drawer = new Register(register);
 	}
 	
-	public Register GetDrawer()
+	public void InitSalesRecords()
 	{
-		return drawer;
+		shiftSales = 0.0;
+		salesInfo = new String[1000];
+	}
+	
+	public double ShiftSales()
+	{
+		return shiftSales;
 	}
 	
 	// Sell a quantity of an item 
@@ -32,8 +45,9 @@ public class Cashier {
 			{
 				curItem.remveQuantity(quant);
 				double actualTransaction = ((curItem.getPrice() * 100) * quant) / 100;
+				shiftSales += actualTransaction;
 				drawer.AddMoney(actualTransaction);
-				System.out.println(quant + " " + item + " sold for $" + actualTransaction);
+				//System.out.println(quant + " " + item + " sold for $" + actualTransaction);
 				LoggingSystem.logAction(GetDateTime() + " || " +
 						"User " + LoginSystem.getCurUser() +
 						" On Register #" + drawer.GetRegisterID() +
@@ -41,6 +55,8 @@ public class Cashier {
 						" for $" + actualTransaction);
 				InventorySystem.FillInventory();
 				UpdateInventory();
+				LogSales(item, quant, actualTransaction, false);
+				
 			}
 			else
 			{
@@ -65,16 +81,18 @@ public class Cashier {
 			// If we have the item, lower quantity, add money to drawer, etc.
 			curItem.addQuantity(quant);
 			double actualTransaction = ((curItem.getPrice() * 100) * quant) / 100;
+			shiftSales -= actualTransaction;
 			drawer.RemoveMoney(actualTransaction);
-			System.out.println(quant + " " + item + " returned for $" + actualTransaction);
+			//System.out.println(quant + " " + item + " returned for $" + actualTransaction);
 			LoggingSystem.logAction(GetDateTime() + " || " +
 					"User " + LoginSystem.getCurUser() +
 					" On Register #" + drawer.GetRegisterID() +
 					": Returned " + quant + " " + item + 
 					" for $" + actualTransaction);
+			InventorySystem.FillInventory();
 			UpdateInventory();
+			LogSales(item, quant, actualTransaction, true);
 		}
-		// TO DO
 	}
 	
 	// Report information on an item (name, quantity, price, etc.)
@@ -91,7 +109,9 @@ public class Cashier {
 			System.out.println("Item: " + curItem.getName() +
 					"\nUPC: " + curItem.getUpc() + 
 					"\nQuantity: " + curItem.getQuantity() + 
-					"\nPrice: " + curItem.getPrice()); 
+					"\nPrice: " + curItem.getPrice() + 
+					"\nThreshold for re-order: " + curItem.getThreshold() + 
+					"\nIs Re-ordered? " + curItem.getIsReorder()); 
 		}
 	}
 	
@@ -114,13 +134,6 @@ public class Cashier {
 	{
 		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
 		return dateFormat.format(new Date());
-	}
-	
-	// Re-order inventory
-	// MIGHT be better written in InventorySystem
-	public void ReOrderInventory()
-	{
-		// TO DO
 	}
 	
 	public Item findItem(String itemName)
@@ -192,5 +205,32 @@ Item curItem = findItem(itemName);
 					": threshold of : " + itemName +" changed to "+newThreshold);
 					
 	}
+	}
+	
+	private void LogSales(String itemSold, int quantity, double money, boolean isReturn)
+	{
+		int i = 1;
+		for (i = 1; i <= salesInfo.length; i++)
+		{
+			if (salesInfo[i] == null)
+			{
+				if (!isReturn)
+				{
+					salesInfo[i] = "Sale: Transaction #" + i + " on Register #" + 
+							drawer.GetRegisterID() + ": " + "Sold " + 
+							quantity + " " + itemSold + " for $" + money;
+				}
+				else
+				{
+					salesInfo[i] = "Return: Transaction #" + i + " on Register #" + 
+							drawer.GetRegisterID() + ": " + "Returned " + 
+							quantity + " " + itemSold + " for $" + money;;
+				}
+				break;
+			}
+		}
+		
+		LoggingSystem.logRegister(GetDateTime() + " || " + salesInfo[i]);
+		System.out.println(salesInfo[i]);
 	}
 }
