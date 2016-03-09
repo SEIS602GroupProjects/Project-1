@@ -152,6 +152,23 @@ public class PoS_System {
 				System.out.println("Wrong formatting. Please type remove [item] [quantity].");
 			}
 		}
+		else if (tmp_split[0].equals("setThreshold"))
+		{
+			if (tmp_split.length == 3) 
+			{
+				try 
+				{
+					cashier.setThreshold(tmp_split[1], Integer.parseInt(tmp_split[2]));
+				}
+				catch (NumberFormatException e) 
+				{
+					System.out.println("Wrong formatting. Please type setThreshold [item] [newThreshold]");
+				}
+			} 
+			else 
+			{
+				System.out.println("Wrong formatting. Please type setThreshold [item] [newThreshold]");			}
+		}
 		else if (tmp_split[0].equals("info"))
 		{
 			if (tmp_split.length == 2) 
