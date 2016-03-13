@@ -41,18 +41,19 @@ public class PoS_System {
 	private void Help()
 	{
 		System.out.println("List of Commands: ");
-		System.out.println("drawer -                   Check current money in drawer.");
-		System.out.println("user -                     Check current user.");
-		System.out.println("sell [item] [quantity] -   Sell a quantity of an item.");
-		System.out.println("return [item] [quantity] - Return a quantity of an item.");
-		System.out.println("add [item] [quantity] -    Add items to the inventory.");
-		System.out.println("remove [item] [quantity] - Remove items from the inventory.");
-		System.out.println("info [item] -              Check item information.");
-		System.out.println("inventory -                Check current inventory.");
-		System.out.println("actionlog -                Print out the log of actions taken");
-		System.out.println("saleslog -                 Print out the log of sales made");
-		System.out.println("logout -                   Log out of system and let another user log in.");
-		System.out.println("exit -                     Exit and shut down system.");
+		System.out.println("drawer -                             Check current money in drawer.");
+		System.out.println("user -                               Check current user.");
+		System.out.println("sell [item] [quantity] -             Sell a quantity of an item.");
+		System.out.println("return [item] [quantity] -           Return a quantity of an item.");
+		System.out.println("add [item] [quantity] -              Add items to the inventory.");
+		System.out.println("remove [item] [quantity] -           Remove items from the inventory.");
+		System.out.println("setThreshold [item] [newThreshold] - Set threshold for re-order.");
+		System.out.println("info [item] -                        Check item information.");
+		System.out.println("inventory -                          Check current inventory.");
+		System.out.println("actionlog -                          Print out the log of actions taken");
+		System.out.println("saleslog -                           Print out the log of sales made");
+		System.out.println("logout -                             Log out of system and let another user log in.");
+		System.out.println("exit -                               Exit and shut down system.");
 	}
 	
 	// Place to add new commands to

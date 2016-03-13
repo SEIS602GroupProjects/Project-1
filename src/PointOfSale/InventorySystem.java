@@ -21,8 +21,11 @@ public class InventorySystem {
 		// For each item, print the item name and the quantities left
 		for (int i=0; i < items.length; i++)
 		{
-			System.out.print(items[i].getName() + " : " + items[i].getQuantity()
-					+" Price : "+items[i].getPrice());
+			System.out.print("UPC: " + items[i].getUpc() + " || Name: " + items[i].getName() + 
+					" || Quantity: " + items[i].getQuantity()
+					+ " || Price: " + items[i].getPrice()
+					+ " || Re-order Threshold: " + items[i].getThreshold()
+					+ " || Is Re-ordered? " + items[i].getIsReorder());
 			System.out.println();
 		}
 	}
