@@ -58,3 +58,14 @@
 03/09/2016 17:16:03 || User 'admin' is now on Register #1
 03/09/2016 17:18:23 || User admin: threshold of : apples changed to 5
 03/09/2016 17:18:53 || User 'admin' logged out. They left Register #1
+03/13/2016 14:22:14 || Login Complete: 'admin' allowed access to the system.
+03/13/2016 14:22:17 || User 'admin' is now on Register #3
+03/13/2016 14:22:28 || User 'admin' logged out. They left Register #3
+03/13/2016 14:22:30 || Login Complete: 'test' allowed access to the system.
+03/13/2016 14:22:32 || User 'test' is now on Register #2
+03/13/2016 14:22:35 || User test On Register #2: Sold 1 apples for $1.05
+03/13/2016 14:22:36 || User 'test' logged out. They left Register #2
+03/13/2016 14:22:43 || INVALID LOGIN ATTEMPT WITH USERNAME 'exit'
+03/13/2016 14:22:46 || Login Complete: 'admin' allowed access to the system.
+03/13/2016 14:22:48 || User 'admin' is now on Register #2
+03/13/2016 14:22:48 || User 'admin' logged out. They left Register #2

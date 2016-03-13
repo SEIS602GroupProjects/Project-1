@@ -1,4 +1,4 @@
-10345;apples;41;1.05;20;false
+10345;apples;40;1.05;20;false
 29499;oranges;9;0.95;10;true
 23944;bread;100;1.99;30;false
 89432;cheerios;50;3.99;25;false
