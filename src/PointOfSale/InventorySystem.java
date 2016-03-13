@@ -15,6 +15,11 @@ public class InventorySystem {
 		ReadInventory();
 	}
 	
+	public InventorySystem(Item[] items)
+	{
+		this.items = items;
+	}
+	
 	// Print out the inventory
 	public static void PrintInventory()
 	{

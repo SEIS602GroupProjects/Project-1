@@ -18,6 +18,11 @@ public class Cashier {
 		drawer = new Register(register);
 	}
 	
+	public void SetRegisterTest(int register)
+	{
+		drawer = new Register(register, "Data/Test Files/RegisterTest.txt");
+	}
+	
 	public void InitSalesRecords()
 	{
 		shiftSales = 0.0;
@@ -56,7 +61,6 @@ public class Cashier {
 				InventorySystem.FillInventory();
 				UpdateInventory();
 				LogSales(item, quant, actualTransaction, false);
-				
 			}
 			else
 			{
@@ -150,7 +154,7 @@ public class Cashier {
 		return null;
 	}
 	public void addToInventory(String itemName, int quant){
-Item curItem = findItem(itemName);
+		Item curItem = findItem(itemName);
 		
 		if (curItem == null)
 		{
@@ -168,7 +172,7 @@ Item curItem = findItem(itemName);
 	}
 	}
 	public void removeFromInventory(String itemName, int quant){
-Item curItem = findItem(itemName);
+		Item curItem = findItem(itemName);
 		
 		if (curItem == null)
 		{
@@ -187,8 +191,7 @@ Item curItem = findItem(itemName);
 	
 	}
 	public void setThreshold(String itemName,int newThreshold ){
-		
-Item curItem = findItem(itemName);
+		Item curItem = findItem(itemName);
 		
 		if (curItem == null)
 		{
@@ -199,7 +202,7 @@ Item curItem = findItem(itemName);
 			// If we have the item, lower quantity, add money to drawer, etc.
 			curItem.setThreshold(newThreshold);
 			System.out.println("the new threshold of "+itemName+" is: "+newThreshold);
-		//	System.out.println(newThreshold + " " + itemName + " changnig the threshold" );
+		//	System.out.println(newThreshold + " " + itemName + " changing the threshold" );
 			LoggingSystem.logAction(GetDateTime() + " || " +
 					"User " + LoginSystem.getCurUser() +
 					": threshold of : " + itemName +" changed to "+newThreshold);

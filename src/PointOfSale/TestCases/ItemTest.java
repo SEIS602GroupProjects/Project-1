@@ -8,7 +8,7 @@ import PointOfSale.Item;
 
 public class ItemTest {
 
-	Item testItem = new Item(12345, "test", 2, 0.75, 5, false);
+	private Item testItem = new Item(12345, "test", 2, 0.75, 5, false);
 	
 	@Test
 	public void getNameTest()

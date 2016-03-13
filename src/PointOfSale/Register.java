@@ -9,7 +9,13 @@ public class Register {
 	public Register(int curRegister)
 	{
 		registerID = curRegister;
-		getRegisterInfo(registerID);
+		getRegisterInfo(registerID, "Data/registerInfo.txt");
+	}
+	
+	public Register(int curRegister, String registerLoc)
+	{
+		registerID = curRegister;
+		getRegisterInfo(registerID, registerLoc);
 	}
 	
 	public int GetRegisterID()
@@ -21,16 +27,26 @@ public class Register {
 	public void AddMoney(double money)
 	{
 		curMoney += money;
-		UpdateRegister();
-		// TO DO
+		UpdateRegister("Data/registerInfo.txt");
+	}
+	
+	// FOR TESTING PURPOSES ONLY
+	public void AddMoneyTest(double money)
+	{
+		curMoney += money;
 	}
 	
 	// Remove money from the register
 	public void RemoveMoney(double money)
 	{
 		curMoney -= money;
-		UpdateRegister();
-		// TO DO
+		UpdateRegister("Data/registerInfo.txt");
+	}
+	
+	// FOR TESTING PURPOSES ONLY
+	public void RemoveMoneyTest(double money)
+	{
+		curMoney -= money;
 	}
 	
 	// Return the amount of money in the register
@@ -39,9 +55,9 @@ public class Register {
 		return curMoney;
 	}
 	
-	public void getRegisterInfo(int register)
+	private void getRegisterInfo(int register, String registerLoc)
 	{
-		String[] tmp = IOSystem.ReadFile("Data/registerInfo.txt");
+		String[] tmp = IOSystem.ReadFile(registerLoc);
 		
 		for (int i=0; i < tmp.length; i++)
 		{
@@ -54,9 +70,9 @@ public class Register {
 		}
 	}
 	
-	public void UpdateRegister()
+	private void UpdateRegister(String registerLoc)
 	{
-		String[] fileInfo = IOSystem.ReadFile("Data/registerInfo.txt");
+		String[] fileInfo = IOSystem.ReadFile(registerLoc);
 		
 		String[] tmp = new String[fileInfo.length]; 
 		for (int i=0; i < fileInfo.length; i++)
@@ -68,12 +84,13 @@ public class Register {
 			if (Integer.parseInt(tmp_split[0]) == registerID)
 			{
 				tmp[i] = registerID + ";" + curMoney;
-			}else
+			}
+			else
 			{
 				tmp[i] = fileInfo[i];
 			}
 		}
-		IOSystem.WriteFile(tmp, "Data/registerInfo.txt");
+		IOSystem.WriteFile(tmp, registerLoc);
 	}
 	
 	
