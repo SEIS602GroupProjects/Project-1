@@ -1,5 +1,7 @@
 package PointOfSale;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 public class PoS_System {
@@ -50,8 +52,9 @@ public class PoS_System {
 		System.out.println("setThreshold [item] [newThreshold] - Set threshold for re-order.");
 		System.out.println("info [item] -                        Check item information.");
 		System.out.println("inventory -                          Check current inventory.");
-		System.out.println("actionlog -                          Print out the log of actions taken");
+		System.out.println("actionlog -                          Print out the log of every action taken");
 		System.out.println("saleslog -                           Print out the log of sales made");
+		System.out.println("reglog [RegisterID] -                Print out the log of a particular register.");
 		System.out.println("logout -                             Log out of system and let another user log in.");
 		System.out.println("exit -                               Exit and shut down system.");
 	}
@@ -66,11 +69,6 @@ public class PoS_System {
 		if (tmp_split[0].equals("help"))
 		{
 			Help();
-		}
-		else if (tmp_split[0].equals("exit"))
-		{
-			logSys.Logout();
-			return false;
 		}
 		else if (tmp_split[0].equals("inventory"))
 		{
@@ -168,7 +166,8 @@ public class PoS_System {
 			} 
 			else 
 			{
-				System.out.println("Wrong formatting. Please type setThreshold [item] [newThreshold]");			}
+				System.out.println("Wrong formatting. Please type setThreshold [item] [newThreshold]");			
+			}
 		}
 		else if (tmp_split[0].equals("info"))
 		{
@@ -200,13 +199,44 @@ public class PoS_System {
 		}
 		else if (tmp_split[0].equals("saleslog"))
 		{
-			LoggingSystem.PrintRegisterLog();
+			LoggingSystem.PrintCashierLog();
+		}
+		else if (tmp_split[0].equals("reglog"))
+		{
+			if (tmp_split.length == 2) 
+			{
+				try 
+				{
+					LoggingSystem.PrintRegisterLog(Integer.parseInt(tmp_split[1]));
+				}
+				catch (NumberFormatException e) 
+				{
+					System.out.println("Wrong formatting. Please type reglog [RegisterID]");
+				}
+			} 
+			else 
+			{
+				System.out.println("Wrong formatting. Please type reglog [RegisterID]");			
+			}
 		}
 		else if (tmp_split[0].equals("logout"))
 		{
+			LoggingSystem.logRegister(GetDateTime() + 
+					" || Register #" + cashier.GetDrawer().GetRegisterID() + 
+					": Total Sales while on shift: $" + cashier.ShiftSales(),
+					cashier.GetDrawer().GetRegisterID());
 			logSys.Logout();
 			logSys.Login(in);
 			logSys.ChooseRegister(in, cashier);
+		}
+		else if (tmp_split[0].equals("exit"))
+		{
+			LoggingSystem.logRegister(GetDateTime() + 
+					" || Register #" + cashier.GetDrawer().GetRegisterID() + 
+					": Total Sales while on shift: $" + cashier.ShiftSales(),
+					cashier.GetDrawer().GetRegisterID());
+			logSys.Logout();
+			return false;
 		}
 		else
 		{
@@ -214,6 +244,12 @@ public class PoS_System {
 		}
 		
 		return true;
+	}
+	
+	private String GetDateTime()
+	{
+		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+		return dateFormat.format(new Date());
 	}
 	
 }

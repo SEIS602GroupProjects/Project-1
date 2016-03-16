@@ -7,9 +7,14 @@ public class LoggingSystem {
 		IOSystem.AppendFile(action, "Data/Log.txt");
 	}
 	
-	public static void logRegister(String action)
+	public static void logCashier(String action)
 	{
-		IOSystem.AppendFile(action, "Data/RegisterLog.txt");
+		IOSystem.AppendFile(action, "Data/CashierLog.txt");
+	}
+	
+	public static void logRegister(String action, int registerID)
+	{
+		IOSystem.AppendFile(action, "Data/Register" + registerID + ".txt");
 	}
 	
 	public static void PrintActionLog()
@@ -22,14 +27,26 @@ public class LoggingSystem {
 		}
 	}
 	
-	public static void PrintRegisterLog()
+	public static void PrintCashierLog()
 	{
-		String[] tmp = IOSystem.ReadFile("Data/RegisterLog.txt");
+		String[] tmp = IOSystem.ReadFile("Data/CashierLog.txt");
 		
 		for (int i=0; i < tmp.length; i++)
 		{
 			System.out.println(tmp[i]);
 		}
 	}
+	
+	public static void PrintRegisterLog(int registerID)
+	{
+		String[] tmp = IOSystem.ReadFile("Data/Register" + registerID + ".txt");
+		
+		for (int i=0; i < tmp.length; i++)
+		{
+			System.out.println(tmp[i]);
+		}
+	}
+	
+	
 	
 }

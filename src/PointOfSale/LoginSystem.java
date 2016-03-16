@@ -61,7 +61,7 @@ public class LoginSystem {
 							// Break out of while loop checking for password
 							LoggingSystem.logAction(GetDateTime() + " || " +
 									"Login Complete: '" + tmp + "' allowed access to the system.");
-							LoggingSystem.logRegister(GetDateTime() + " || " +
+							LoggingSystem.logCashier(GetDateTime() + " || " +
 									"Login Complete: '" + tmp + "' allowed access to the system.");
 							break;
 						}
@@ -117,8 +117,11 @@ public class LoginSystem {
 				{
 					LoggingSystem.logAction(GetDateTime() + " || " + "User '" + 
 										curUser + "' is now on Register #" + curRegister);
-					LoggingSystem.logRegister(GetDateTime() + " || " + "User '" + 
+					LoggingSystem.logCashier(GetDateTime() + " || " + "User '" + 
 							curUser + "' is now on Register #" + curRegister);
+					LoggingSystem.logRegister(GetDateTime() + " || Register #"
+							+ curRegister + ": User '" + curUser + 
+							"' is now on this register.", curRegister);
 					cashier.InitSalesRecords();
 					break;
 				}
@@ -143,8 +146,11 @@ public class LoginSystem {
 	{
 		LoggingSystem.logAction(GetDateTime() + " || " + "User '" + curUser + 
 						"' logged out. They left Register #" + curRegister);
-		LoggingSystem.logRegister(GetDateTime() + " || " + "User '" + curUser + 
+		LoggingSystem.logCashier(GetDateTime() + " || " + "User '" + curUser + 
 				"' logged out. They left Register #" + curRegister);
+		LoggingSystem.logRegister(GetDateTime() + " || Register #"
+				+ curRegister + ": User '" + curUser + 
+				"' left this register.", curRegister);
 		curUser = "";
 		curRegister = 0;
 		System.out.println("Logout successful.");

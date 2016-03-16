@@ -233,7 +233,10 @@ public class Cashier {
 			}
 		}
 		
-		LoggingSystem.logRegister(GetDateTime() + " || " + salesInfo[i]);
+		LoggingSystem.logCashier(GetDateTime() + " || " + salesInfo[i]);
+		LoggingSystem.logRegister(GetDateTime() + " || " + "Register #" + 
+							drawer.GetRegisterID() + ", Transaction #" + i + ": Sold " + quantity + 
+							" " + itemSold + " for $" + money, drawer.GetRegisterID());
 		System.out.println(salesInfo[i]);
 	}
 }
