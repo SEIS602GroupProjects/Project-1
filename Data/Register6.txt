@@ -1,0 +1,2 @@
+04/17/2016 16:16:08 || Register #6: User 'admin' is now on this register.
+04/17/2016 16:16:41 || Register #6, Transaction #1: Sold 3 apples for $3.15

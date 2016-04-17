@@ -46,7 +46,7 @@ public class Cashier {
 		else
 		{
 			// If we have the item, lower quantity, add money to drawer, etc.
-			if (curItem.getQuantity() >= quant)
+			if (curItem.getQuantity() >= quant && quant >= 0)
 			{
 				curItem.remveQuantity(quant);
 				double actualTransaction = ((curItem.getPrice() * 100) * quant) / 100;

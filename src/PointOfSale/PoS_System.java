@@ -4,12 +4,21 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
+enum SysMode {
+	deflt,
+	order
+}
+
 public class PoS_System {
 
 	private LoginSystem logSys;
 	private Cashier cashier;
 	private Scanner in;
 	private String tmp = "";
+	
+	private SysMode curMode = SysMode.deflt;
+	
+	private Order order;
 	
 	public PoS_System()
 	{
@@ -66,14 +75,16 @@ public class PoS_System {
 		String[] tmp_split = cmd.split(" ");
 		//System.out.println(tmp_split[0]);
 		
-		if (tmp_split[0].equals("help"))
+		if (curMode == SysMode.deflt)
 		{
-			Help();
-		}
-		else if (tmp_split[0].equals("inventory"))
-		{
-			InventorySystem.PrintInventory();
-		}
+			if (tmp_split[0].equals("help"))
+			{
+				Help();
+			}
+			else if (tmp_split[0].equals("inventory"))
+			{
+				InventorySystem.PrintInventory();
+			}
 		else if (tmp_split[0].equals("user"))
 		{
 			System.out.println(LoginSystem.getCurUser());
@@ -238,9 +249,47 @@ public class PoS_System {
 			logSys.Logout();
 			return false;
 		}
+		else if (tmp_split[0].equals("order"))
+		{
+			order = new Order(cashier);
+			System.out.println("Enter ordering mode.");
+			curMode = SysMode.order;
+		}
 		else
 		{
 			System.out.println("Incorrect command. Type 'help' for a list of commands.");
+		}
+		} 
+		else if (curMode == SysMode.order)
+		{
+			if (tmp_split[0].equals("add"))
+			{
+				if (tmp_split.length == 3) 
+				{
+					try 
+					{
+						order.AddToOrder(tmp_split[1], Integer.parseInt(tmp_split[2]));
+					}
+					catch (NumberFormatException e) 
+					{
+						System.out.println("Wrong formatting. Please type add [item] [quantity].");
+					}
+				} 
+				else 
+				{
+					System.out.println("Wrong formatting. Please type add [item] [quantity].");
+				}
+			}
+			else if (tmp_split[0].equals("complete"))
+			{
+				order.CompleteOrder();
+				curMode = SysMode.deflt;
+			}
+			else if (tmp_split[0].equals("cancel"))
+			{
+				order.CancelOrder();
+				curMode = SysMode.deflt;
+			}
 		}
 		
 		return true;
