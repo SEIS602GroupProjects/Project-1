@@ -5,3 +5,31 @@
 04/17/2016 16:14:57 || Register #2, Transaction #1: Sold 3 apples for $3.15
 04/17/2016 16:15:14 || Register #2, Transaction #2: Sold 3 apples for $3.15
 04/17/2016 16:15:14 || Register #2, Transaction #3: Sold 3 waffles for $16.47
+05/01/2016 15:52:07 || Register #2: User 'admin' is now on this register.
+05/01/2016 15:52:31 || Register #2, Transaction #1: Sold 3 apples for $3.15
+05/01/2016 15:52:32 || Register #2, Transaction #2: Sold 2 waffles for $10.98
+05/01/2016 16:02:10 || Register #2: User 'admin' is now on this register.
+05/01/2016 16:03:45 || Register #2: User 'admin' is now on this register.
+05/01/2016 16:04:37 || Register #2: Total Sales while on shift: $0.0
+05/01/2016 16:04:37 || Register #2: User 'admin' left this register.
+05/01/2016 16:04:45 || Register #2: User 'admin' is now on this register.
+05/01/2016 16:06:32 || Register #2: User 'admin' is now on this register.
+05/01/2016 16:07:29 || Register #2: Total Sales while on shift: $0.0
+05/01/2016 16:07:29 || Register #2: User 'admin' left this register.
+05/01/2016 16:08:02 || Register #2: User 'admin' is now on this register.
+05/01/2016 16:08:50 || Register #2: User 'admin' is now on this register.
+05/01/2016 16:10:32 || Register #2: User 'admin' is now on this register.
+05/01/2016 16:10:53 || Register #2, Transaction #1: Sold 3 apples for $3.15
+05/01/2016 16:10:53 || Register #2, Transaction #2: Sold 2 waffles for $10.98
+05/01/2016 16:22:49 || Register #2: User 'admin' is now on this register.
+05/01/2016 16:24:06 || Register #2: User 'admin' is now on this register.
+05/01/2016 16:26:41 || Register #2, Transaction #1: Sold 2 waffles for $10.98
+05/01/2016 16:26:41 || Register #2, Transaction #2: Sold 7 oranges for $6.65
+05/01/2016 16:27:06 || Register #2: Total Sales while on shift: $17.630000000000003
+05/01/2016 16:27:06 || Register #2: User 'admin' left this register.
+05/01/2016 16:39:52 || Register #2: User 'admin' is now on this register.
+05/01/2016 16:39:54 || Register #2: Total Sales while on shift: $0.0
+05/01/2016 16:39:54 || Register #2: User 'admin' left this register.
+05/01/2016 16:40:13 || Register #2: User 'test' is now on this register.
+05/01/2016 16:40:14 || Register #2: Total Sales while on shift: $0.0
+05/01/2016 16:40:14 || Register #2: User 'test' left this register.

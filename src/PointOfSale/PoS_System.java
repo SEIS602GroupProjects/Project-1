@@ -51,21 +51,34 @@ public class PoS_System {
 	
 	private void Help()
 	{
-		System.out.println("List of Commands: ");
-		System.out.println("drawer -                             Check current money in drawer.");
-		System.out.println("user -                               Check current user.");
-		System.out.println("sell [item] [quantity] -             Sell a quantity of an item.");
-		System.out.println("return [item] [quantity] -           Return a quantity of an item.");
-		System.out.println("add [item] [quantity] -              Add items to the inventory.");
-		System.out.println("remove [item] [quantity] -           Remove items from the inventory.");
-		System.out.println("setThreshold [item] [newThreshold] - Set threshold for re-order.");
-		System.out.println("info [item] -                        Check item information.");
-		System.out.println("inventory -                          Check current inventory.");
-		System.out.println("actionlog -                          Print out the log of every action taken");
-		System.out.println("saleslog -                           Print out the log of sales made");
-		System.out.println("reglog [RegisterID] -                Print out the log of a particular register.");
-		System.out.println("logout -                             Log out of system and let another user log in.");
-		System.out.println("exit -                               Exit and shut down system.");
+		if (curMode == SysMode.deflt)
+		{
+			System.out.println("List of Commands: ");
+			System.out.println("drawer -                             Check current money in drawer.");
+			System.out.println("user -                               Check current user.");
+			System.out.println("sell [item] [quantity] -             Sell a quantity of an item.");
+			System.out.println("return [item] [quantity] -           Return a quantity of an item.");
+			System.out.println("add [item] [quantity] -              Add items to the inventory.");
+			System.out.println("remove [item] [quantity] -           Remove items from the inventory.");
+			System.out.println("setThreshold [item] [newThreshold] - Set threshold for re-order.");
+			System.out.println("info [item] -                        Check item information.");
+			System.out.println("inventory -                          Check current inventory.");
+			System.out.println("actionlog -                          Print out the log of every action taken");
+			System.out.println("saleslog -                           Print out the log of sales made");
+			System.out.println("reglog [RegisterID] -                Print out the log of a particular register.");
+			System.out.println("logout -                             Log out of system and let another user log in.");
+			System.out.println("exit -                               Exit and shut down system.");
+		}
+		else if (curMode == SysMode.order)
+		{
+			System.out.println("List of Commands: ");
+			System.out.println("drawer -                             Check current money in drawer.");
+			System.out.println("add [item] [quantity] -              Add an item to the order.");
+			System.out.println("remove [item] [quantity] -           Remove an item from the order.");
+			System.out.println("status -                             View order status.");
+			System.out.println("complete -                           Complete an order and exit the ordering system.");
+			System.out.println("cancel -                             Cancel an order and exit the ordering system.");
+		}
 	}
 	
 	// Place to add new commands to
@@ -280,6 +293,28 @@ public class PoS_System {
 					System.out.println("Wrong formatting. Please type add [item] [quantity].");
 				}
 			}
+			else if (tmp_split[0].equals("remove"))
+			{
+				if (tmp_split.length == 3) 
+				{
+					try 
+					{
+						order.RemoveFromOrder(tmp_split[1], Integer.parseInt(tmp_split[2]));
+					}
+					catch (NumberFormatException e) 
+					{
+						System.out.println("Wrong formatting. Please type remove [item] [quantity].");
+					}
+				} 
+				else 
+				{
+					System.out.println("Wrong formatting. Please type remove [item] [quantity].");
+				}
+			}
+			else if (tmp_split[0].equals("status"))
+			{
+				order.OrderStatus();
+			}
 			else if (tmp_split[0].equals("complete"))
 			{
 				order.CompleteOrder();
@@ -289,6 +324,10 @@ public class PoS_System {
 			{
 				order.CancelOrder();
 				curMode = SysMode.deflt;
+			}
+			else
+			{
+				System.out.println("Incorrect command. Type 'help' for a list of commands.");
 			}
 		}
 		

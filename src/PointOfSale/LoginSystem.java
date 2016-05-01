@@ -26,17 +26,55 @@ public class LoginSystem {
 	{
 		boolean isCorrect = false;
 		String tmp = "";
-		String tmppw = "";
-		
-		// Ask for username
-		System.out.println("Please enter your username:");
+		String tmppw = "";		
 		
 		// Keep asking for username until valid one given
 		while (true)
 		{
-			// Get typed input
+			// Ask for username
+			System.out.println("Please enter your username: ");
 			tmp = in.nextLine();
-
+			
+			// Ask for password
+			System.out.println("Please enter your password: ");
+			tmppw = in.nextLine();
+			
+			// Loop through the array of valid usernames
+			for (int i=0; i < usernames.length; i++)
+			{
+				// If the text inputed is a valid username 
+				if (tmp.equals(usernames[i]))
+				{ 
+					if (tmppw.equals(passwords[i]))
+					{
+						// Welcome the user to the system, give them access
+						System.out.println("Welcome, " + tmp + ". Electronic-Sales Counter system started.");
+						isCorrect = true;
+						curUser = usernames[i];
+						// Break out of while loop checking for password
+						LoggingSystem.logAction(GetDateTime() + " || " +
+								"Login Complete: '" + tmp + "' allowed access to the system.");
+						LoggingSystem.logCashier(GetDateTime() + " || " +
+								"Login Complete: '" + tmp + "' allowed access to the system.");
+						break;
+					}
+					// If the password inputed isn't correct, ask for user/pass combination again
+					LoggingSystem.logAction(GetDateTime() + " || " +
+							"INVALID PASSWORD BY USER: " + "'"
+							+ tmp + "'");
+				}					
+			}
+			
+			if (isCorrect)
+			{
+				break;
+			}						
+			// If an incorrect username was typed in, ask for the user/pass combination again
+			System.out.println("Username/Password combination not found. Please try again");
+			LoggingSystem.logAction(GetDateTime() + " || " +
+					"INVALID LOGIN ATTEMPT WITH USERNAME '" + tmp + "'");
+		}
+			/*
 			// Loop through the array of valid usernames
 			for (int i=0; i < usernames.length; i++)
 			{
@@ -85,6 +123,7 @@ public class LoginSystem {
 			LoggingSystem.logAction(GetDateTime() + " || " +
 					"INVALID LOGIN ATTEMPT WITH USERNAME '" + tmp + "'");
 		}
+		*/
 	}
 	
 	// Choose a register
