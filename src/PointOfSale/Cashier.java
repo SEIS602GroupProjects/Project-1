@@ -53,11 +53,7 @@ public class Cashier {
 				shiftSales += actualTransaction;
 				drawer.AddMoney(actualTransaction);
 				//System.out.println(quant + " " + item + " sold for $" + actualTransaction);
-				LoggingSystem.logAction(GetDateTime() + " || " +
-						"User " + LoginSystem.getCurUser() +
-						" On Register #" + drawer.GetRegisterID() +
-						": Sold " + quant + " " + item + 
-						" for $" + actualTransaction);
+				
 				InventorySystem.FillInventory();
 				UpdateInventory();
 				LogSales(item, quant, actualTransaction, false);
@@ -132,12 +128,6 @@ public class Cashier {
 					InventorySystem.items()[i].getIsReorder();
 		}
 		IOSystem.WriteFile(tmp, "Data/Inventory.txt");
-	}
-	
-	private String GetDateTime()
-	{
-		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-		return dateFormat.format(new Date());
 	}
 	
 	public Item findItem(String itemName)
@@ -238,5 +228,11 @@ public class Cashier {
 							drawer.GetRegisterID() + ", Transaction #" + i + ": Sold " + quantity + 
 							" " + itemSold + " for $" + money, drawer.GetRegisterID());
 		System.out.println(salesInfo[i]);
+	}
+	
+	private String GetDateTime()
+	{
+		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+		return dateFormat.format(new Date());
 	}
 }

@@ -1,9 +1,0 @@
-
-04/17/2016 15:15:39 || Register #3: User 'admin' is now on this register.
-04/17/2016 15:15:51 || Register #3, Transaction #1: Sold 2 apples for $2.1
-04/17/2016 15:16:53 || Register #3, Transaction #2: Sold -2 apples for $-2.1
-04/17/2016 15:18:38 || Register #3: User 'admin' is now on this register.
-05/01/2016 16:00:32 || Register #3: User 'admin' is now on this register.
-05/01/2016 16:00:48 || Register #3, Transaction #1: Sold 5 apples for $5.25
-05/01/2016 16:00:57 || Register #3: Total Sales while on shift: $5.25
-05/01/2016 16:00:57 || Register #3: User 'admin' left this register.

@@ -56,7 +56,6 @@ public class PoS_System {
 			System.out.println("List of Commands: ");
 			System.out.println("drawer -                             Check current money in drawer.");
 			System.out.println("user -                               Check current user.");
-			System.out.println("sell [item] [quantity] -             Sell a quantity of an item.");
 			System.out.println("return [item] [quantity] -           Return a quantity of an item.");
 			System.out.println("add [item] [quantity] -              Add items to the inventory.");
 			System.out.println("remove [item] [quantity] -           Remove items from the inventory.");
@@ -102,25 +101,6 @@ public class PoS_System {
 		{
 			System.out.println(LoginSystem.getCurUser());
 		}
-		else if (tmp_split[0].equals("sell"))
-		{
-			if (tmp_split.length == 3) 
-			{
-				try 
-				{
-					cashier.Sell(tmp_split[1], Integer.parseInt(tmp_split[2]));
-				}
-				catch (NumberFormatException e) 
-				{
-					System.out.println("Wrong formatting. Please type sell [item] [quantity].");
-				}
-			} 
-			else 
-			{
-				System.out.println("Wrong formatting. Please type sell [item] [quantity].");
-			}
-		}
-		// Copy/paste/edit for add/remove inventory/set threshold
 		else if (tmp_split[0].equals("return"))
 		{
 			if (tmp_split.length == 3) 
@@ -310,6 +290,10 @@ public class PoS_System {
 				{
 					System.out.println("Wrong formatting. Please type remove [item] [quantity].");
 				}
+			}
+			else if (tmp_split[0].equals("help"))
+			{
+				Help();
 			}
 			else if (tmp_split[0].equals("status"))
 			{

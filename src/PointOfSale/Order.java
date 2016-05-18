@@ -1,5 +1,8 @@
 package PointOfSale;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Order {
 
 	Cashier curCash;
@@ -83,22 +86,19 @@ public class Order {
 	
 	public void CompleteOrder()
 	{
+		
+		String s = GetDateTime() + " || " +
+				"User " + LoginSystem.getCurUser() +
+				" On Register #" + curCash.GetDrawer().GetRegisterID() +
+				" Sold: ";
 		for (int i = 0; i < items.size(); i++)
 		{
 			curCash.Sell(items.GetNode(i).Data(), quant.GetNode(i).Data());
+			s += ("\n    " + quant.GetNode(i).Data() + " " +
+			items.GetNode(i).Data()); 
 		}
 		
-		/*for (int i = 0; i < items.length; i++)
-		{
-			if (items[i] != null)
-			{
-				curCash.Sell(items[i], quant[i]);
-			}
-			else
-			{
-				break;
-			}
-		}*/
+		LoggingSystem.logAction(s);
 		
 		System.out.println("Order complete.");
 	}
@@ -122,5 +122,11 @@ public class Order {
 		}
 	
 		return null;
+	}
+	
+	private String GetDateTime()
+	{
+		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+		return dateFormat.format(new Date());
 	}
 }
